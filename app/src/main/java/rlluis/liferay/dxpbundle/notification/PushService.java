@@ -58,9 +58,9 @@ public class PushService extends AbstractPushService {
 
 	@Override
 	protected void processJSONNotification(final JSONObject json) throws JSONException {
-		String title = "Título";
-		String description = "Near our store today? Hurry in and use your 25% off our Spring Shoe Sale! Click for details.";
+		String title = json.has("title") ? json.getString("title") : "Empty title";
+		String body = json.has("body") ? json.getString("body") : "Empty body";
 
-		createGlobalNotification(title, description, this);
+		createGlobalNotification(title, body, this);
 	}
 }
